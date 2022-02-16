@@ -1,4 +1,4 @@
-import { DetailedBookCard } from "../components/BookDetail/detailedBookCard.js";
+import DetailedBookCard from "../components/BookDetail/detailedBookCard.js";
 
 import React from "react";
 

@@ -1,0 +1,10 @@
+.mainPage {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 30rem;
+}

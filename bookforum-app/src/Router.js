@@ -1,15 +1,14 @@
 import React from "react";
-import { BookDetail } from "./pages/bookDetailPage";
-import { MainPage } from "./pages/MainPage/mainPage";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import BookDetail from "./pages/bookDetailPage";
+import MainPage from "./pages/mainPage.js";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
 function Router() {
 	return (
 		<BrowserRouter>
-			<Switch>
-				<Route path="/detail" component={BookDetail} />
-				<Route path="/" component={MainPage} />
-			</Switch>
+			<Routes>
+				<Route path="/detail" element={<BookDetail />} /> <Route path="/" element={<MainPage />} />{" "}
+			</Routes>{" "}
 		</BrowserRouter>
 	);
 }

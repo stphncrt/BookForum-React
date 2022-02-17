@@ -7,9 +7,9 @@ const BookCard = (props) => {
 	return (
 		<StyledCardWrapper
 			onClick={() => {
-				navigate("/detail");
+				navigate(`/detail/${props.id}`);
 			}}>
-			<h3> {props.title} </h3>
+			<h4> {props.title} </h4>
 			<StyledImg src={props.image} alt={props.title}></StyledImg>
 			<h4> {props.author} </h4>
 		</StyledCardWrapper>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const StyledCardWrapper = styled.div `
+export const StyledCardWrapper = styled.div`
 	margin: 10px;
 	width: 20%;
 	height: 20rem;
@@ -12,13 +12,12 @@ export const StyledCardWrapper = styled.div `
 	transition: 0.5s;
 	background-color: #d1c7c7;
 	opacity: 0.8;
-	
 
 	&:hover {
 		transform: scale(1.02);
 	}
 `;
-export const StyledImg = styled.img `
+export const StyledImg = styled.img`
 	width: 90%;
 	height: 60%;
 	margin: 5px;

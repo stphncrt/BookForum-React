@@ -3,10 +3,12 @@ import "./page.css";
 import { library } from "../data.js";
 import BookCard from "../components/BookCard/bookCard.js";
 import { StyledBookWrapper } from "../components/BookContainer/booksContainer";
+import Content from "../components/Content/Content";
+import ReadingImg from "../components/ReadingImg/ReadingImg";
 
 function MainPage() {
 	const API_KEY = "AIzaSyC7g22ZagHV-J4LfBTyi3TsNqS4TAl1LB8";
-	const url = `https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${API_KEY}`;
+	const url = `https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${API_KEY}&maxResult=40`;
 	const [searchText, setSearchText] = useState("");
 	const [books, setBooks] = useState([]);
 
@@ -21,22 +23,16 @@ function MainPage() {
 				throw new Error("Fetch API failed");
 			}
 			const books = await response.json();
-			console.log(books.items);
 			setBooks(books.items);
 		} catch (err) {
 			console.error(err);
 		}
 	}
-	// fetchAPI();
+	fetchAPI();
 	return (
 		<div className="mainPage">
-			<h2 style={{ width: "40%" }}>Classes of Books</h2>
-			<form>
-				<div>
-					<input type="text" placeholder="Search your Books" onChange={handleChange} />
-					<button type="submit">Search</button>
-				</div>
-			</form>
+			<ReadingImg />
+			<Content />
 			<StyledBookWrapper>
 				{books.map((book) => {
 					return (
@@ -49,17 +45,6 @@ function MainPage() {
 						/>
 					);
 				})}
-				{/* {library.map((book) => {
-					return (
-						<BookCard
-							key={book.id}
-							id={book.id}
-							title={book.title}
-							image={book.image}
-							author={book.author}
-						/>
-					);
-				})} */}
 			</StyledBookWrapper>
 		</div>
 	);

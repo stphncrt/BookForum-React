@@ -15,6 +15,7 @@ export const StyledCardWrapper = styled.div `
 
 	&:hover {
 		transform: scale(1.02);
+		cursor: pointer;
 	}
 `;
 export const StyledImg = styled.img `
@@ -25,7 +26,17 @@ export const StyledImg = styled.img `
 `;
 
 
-export const StyledText = styled.h5 `
+export const StyledTitle = styled.h5 `
 overflow: hidden;
+text-overflow: ellipsis;
+padding: 0.2rem;
+display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
 line
+`
+export const StyledText = styled.h6 `
+overflow: hidden;
+text-overflow: ellipsis;
+padding: 0.2rem;
 `

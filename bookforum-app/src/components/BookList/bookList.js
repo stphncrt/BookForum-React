@@ -1,7 +1,7 @@
 import BookCard from "../BookCard/bookCard.js";
 import { StyledBookWrapper } from "../BookContainer/booksContainer";
 
-export const BookList = ({ books }) => {
+const BookList = ({ books }) => {
 	return (
 		<StyledBookWrapper>
 			{books?.map((book, index) => (
@@ -16,3 +16,4 @@ export const BookList = ({ books }) => {
 		</StyledBookWrapper>
 	);
 };
+export default BookList;

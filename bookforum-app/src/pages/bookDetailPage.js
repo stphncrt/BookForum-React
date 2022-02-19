@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom";
 const API_KEY = "AIzaSyC7g22ZagHV-J4LfBTyi3TsNqS4TAl1LB8";
 
 function BookDetail() {
-	const [book, setBook] = useState({});
 	const { id } = useParams();
 	console.log(id);
 	const url = `https://www.googleapis.com/books/v1/volumes/${id}?key=${API_KEY}`;
+	const [book, setBook] = useState({});
+
 	async function fetchAPI() {
 		try {
 			const response = await fetch(url);
@@ -16,26 +17,35 @@ function BookDetail() {
 				throw new Error("Fetch API failed");
 			}
 			const bookData = await response.json();
-			console.log(bookData);
 			setBook(Object.assign(book, bookData));
 			console.log(book);
 		} catch (err) {
 			console.log(err.message);
 		}
 	}
-	useEffect(() => {
-		fetchAPI();
-	}, []);
+	// useEffect(() => {
+	// 	fetch(url)
+	// 		.then((response) => {
+	// 			response.json();
+	// 		})
+	// 		.then((json) => {
+	// 			// setBook(Object.assign(book, json));
+	// 			console.log(json);
+	// 		})
+	// 		.catch((err) => {
+	// 			console.log(err.message);
+	// 		});
+	// }, [url]);
+	// console.log(book);
+	fetchAPI();
 	console.log(book);
 	return (
 		<div className="detailPage">
-			<h3> detailed book </h3>
 			<DetailedBookCard
-				title={book.volumeInfo.title}
-				image={book.volumeInfo.imageLinks.thumbnail}
-				description={book.description}
+				title={book?.volumeInfo?.title}
+				image={book?.volumeInfo?.imageLinks?.thumbnail}
+				description={book?.description}
 			/>
-			)
 		</div>
 	);
 }

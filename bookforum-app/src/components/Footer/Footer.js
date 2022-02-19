@@ -6,7 +6,7 @@ function Footer() {
 		<div>
 			<StyledWrapper>
 				<StyledLinkContainer>
-					<h3>COMPANY</h3>
+					<StyledTitle> COMPANY </StyledTitle>
 					<StyledLink href="" className="link">
 						About us
 					</StyledLink>
@@ -30,7 +30,7 @@ function Footer() {
 					</StyledLink>
 				</StyledLinkContainer>
 				<StyledLinkContainer>
-					<h3>WORK WITH US</h3>
+					<StyledTitle> WORK WITH US </StyledTitle>
 					<StyledLink href="" className="link">
 						Authors
 					</StyledLink>
@@ -41,16 +41,22 @@ function Footer() {
 						Authors & ads blog
 					</StyledLink>
 					<StyledLink href="" className="link">
-						API
+						API{" "}
 					</StyledLink>
 				</StyledLinkContainer>
 				<StyledLinkContainer>
-					<h3>CONNECT</h3>
-					<StyledLink href="">Facebook</StyledLink>
-					<StyledLink href="">Twitter</StyledLink>
-					<StyledLink href="">Youtube</StyledLink>
-					<StyledLink href=""></StyledLink>
+					<StyledTitle> CONNECT </StyledTitle> <StyledLink href=""> Facebook </StyledLink>
+					<StyledLink href=""> Twitter </StyledLink> <StyledLink href=""> Youtube </StyledLink>
+					<StyledLink href=""> </StyledLink>
 				</StyledLinkContainer>
+				<StyledCompanyLink>
+					<img
+						src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/160px-Google_Play_Store_badge_EN.svg.png"
+						alt="google play"></img>
+					<img
+						src="https://d1a3f4spazzrp4.cloudfront.net/uber-com/1.3.8/d1a3f4spazzrp4.cloudfront.net/illustrations/app-store-apple-f1f919205b.svg"
+						alt="app store"></img>
+				</StyledCompanyLink>
 			</StyledWrapper>
 		</div>
 	);
@@ -68,7 +74,7 @@ export const StyledWrapper = styled.div`
 	gap: 5rem;
 	padding: 1rem 6rem;
 	background-color: #f9f8f4;
-	width: 100%;
+	flex-wrap: wrap;
 `;
 export const StyledLink = styled.a`
 	text-decoration: none;
@@ -76,4 +82,12 @@ export const StyledLink = styled.a`
 	&:hover {
 		text-decoration: underline;
 	}
+`;
+export const StyledTitle = styled.h3`
+	color: #767676;
+	font-weight: 500;
+`;
+export const StyledCompanyLink = styled.div`
+	margin-left: auto;
+	width: 10rem;
 `;

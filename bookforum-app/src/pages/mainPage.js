@@ -1,51 +1,61 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./page.css";
 import { library } from "../data.js";
-import BookCard from "../components/BookCard/bookCard.js";
-import { StyledBookWrapper } from "../components/BookContainer/booksContainer";
 import Content from "../components/Content/Content";
 import ReadingImg from "../components/ReadingImg/ReadingImg";
+import { BookList } from "../components/BookList/bookList";
+import { StyledContainer, StyledWrapper, StyledInput, StyledButton } from "./mainPageStyle";
 
 function MainPage() {
 	const API_KEY = "AIzaSyC7g22ZagHV-J4LfBTyi3TsNqS4TAl1LB8";
-	const url = `https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${API_KEY}&maxResult=40`;
 	const [searchText, setSearchText] = useState("");
+	const url = `https://www.googleapis.com/books/v1/volumes?q=${
+		!searchText ? "react" : searchText
+	}:keyes&key=${API_KEY}&maxResult=40`;
 	const [books, setBooks] = useState([]);
+	const [inputValue, setInputValue] = useState("");
 
 	function handleChange(e) {
-		const book = e.target.value;
-		setSearchText(book);
+		setInputValue(e.target.value);
+		console.log(e.target.value);
 	}
-	async function fetchAPI() {
-		try {
-			const response = await fetch(url);
-			if (!response.ok) {
-				throw new Error("Fetch API failed");
-			}
-			const books = await response.json();
-			setBooks(books.items);
-		} catch (err) {
-			console.error(err);
-		}
+
+	function handleSearch(event) {
+		event.preventDefault();
+		setSearchText(inputValue);
 	}
-	fetchAPI();
+
+	function handleFocus(e) {
+		e.target.value = "";
+	}
+
+	useEffect(() => {
+		fetch(url)
+			.then((response) => response.json())
+			.then((json) => setBooks(json?.items))
+			.catch((err) => new Error(err));
+	}, [url]);
+
 	return (
 		<div className="mainPage">
 			<ReadingImg />
+			<StyledContainer>
+				<h4> Join the challenge, find your book. </h4>
+				<StyledWrapper>
+					<StyledInput
+						onFocus={handleFocus}
+						onChange={handleChange}
+						type="text"
+						placeholder="Search your book..."
+					/>
+					<StyledButton type="submit" onClick={handleSearch}>
+						Search
+					</StyledButton>
+				</StyledWrapper>
+			</StyledContainer>
+			{/* <SearchBar /> */}
 			<Content />
-			<StyledBookWrapper>
-				{books.map((book) => {
-					return (
-						<BookCard
-							key={book.volumeInfo.industryIdentifiers["ISBN_13"]}
-							id={book.id}
-							title={book.volumeInfo.title}
-							image={book.volumeInfo.imageLinks.thumbnail}
-							author={book.volumeInfo.authors["0"]}
-						/>
-					);
-				})}
-			</StyledBookWrapper>
+			<BookList books={books} />
 		</div>
 	);
 }

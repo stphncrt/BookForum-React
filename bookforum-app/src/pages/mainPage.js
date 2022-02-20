@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./page.css";
-import { library } from "../data.js";
 import Content from "../components/Content/Content";
 import ReadingImg from "../components/ReadingImg/ReadingImg";
 import BookList from "../components/BookList/bookList";

@@ -1,17 +1,30 @@
 import React from "react";
 import "./detailedBookCard.css";
 
-function DetailedBookCard(props) {
+function DetailedBookCard({
+	title,
+	image,
+	description,
+	author,
+	category,
+	pageCount,
+	publishedDate,
+	isbn,
+}) {
 	return (
-		<div class="cardWrapper">
-			<div class="infoWrapper">
-				<img class="cardImage" src={props.image} alt={props.title} />
-				<a href="">See other books of the author</a>
-				<h3>lorem</h3>
+		<div className="cardWrapper">
+			<div className="infoWrapper">
+				<img className="cardImage" src={image} alt={title} />
+				<h3>{author}</h3>
+				<a href=""> See other books of the author </a>
 			</div>
-			<div class="infoWrapper">
-				<h3> {props.title} </h3>
-				<p> {props.description} </p>
+			<div className="infoWrapper">
+				<h3> {title} </h3>
+				<p> {description} </p>
+				<p class="smallCase">
+					Category: {category}, ISBN: {isbn} <br /> Publish Date: {publishedDate}, Page Count:{" "}
+					{pageCount}
+				</p>
 			</div>
 		</div>
 	);

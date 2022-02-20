@@ -1,24 +1,37 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+// import { StyledContainer, StyledWrapper, StyledInput, StyledButton } from "./mainPageStyle";
 
-function SearchBar() {
-	const [book, setBook] = useState("");
-	const 
+function SearchBar({ setSearchText }) {
+	const [inputValue, setInputValue] = useState("");
 
-	function handleSearch() {}
-	function handleChange(event) {
-		const search = event.target.value;
+	function handleChange(e) {
+		setInputValue(e.target.value);
+		console.log(e.target.value);
+	}
+
+	function handleSearch(event) {
+		event.preventDefault();
+		setSearchText(inputValue);
+	}
+
+	function handleFocus(e) {
+		e.target.value = "";
 	}
 	return (
 		<StyledContainer>
-			<h4> Join the challenge, find your book. </h4>{" "}
+			<StyledText> Join the challenge, find your book. </StyledText>
 			<StyledWrapper>
-				<StyledInput type="text" onChange={handleChange} placeholder="Search your book..." />
+				<StyledInput
+					type="text"
+					onFocus={handleFocus}
+					onChange={handleChange}
+					placeholder="Search your book..."
+				/>
 				<StyledButton type="submit" onClick={handleSearch}>
-					{" "}
-					Search{" "}
-				</StyledButton>{" "}
-			</StyledWrapper>{" "}
+					Search
+				</StyledButton>
+			</StyledWrapper>
 		</StyledContainer>
 	);
 }
@@ -56,4 +69,8 @@ export const StyledButton = styled.button`
 		color: #fff;
 		font-weight: bold;
 	}
+`;
+export const StyledText = styled.h4`
+	color: #420000;
+	margin: 0.5rem 0.5rem;
 `;

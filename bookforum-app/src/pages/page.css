@@ -10,8 +10,10 @@
 .detailPage {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100vh;
-    resize: auto;
+    background-image: url("https://images.gr-assets.com/challenges/2022/facebook.png");
+    background-size: cover;
     backdrop-filter: blur(15px);
 }

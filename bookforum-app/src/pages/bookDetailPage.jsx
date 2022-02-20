@@ -2,7 +2,7 @@ import DetailedBookCard from "../components/BookDetail/detailedBookCard.js";
 import "./page.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-const API_KEY = "AIzaSyC7g22ZagHV-J4LfBTyi3TsNqS4TAl1LB8";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function BookDetail() {
 	const { id } = useParams();

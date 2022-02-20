@@ -6,7 +6,7 @@ import BookList from "../components/BookList/bookList";
 import SearchBar from "../components/SearchBar/SearchBar";
 
 function MainPage() {
-	const API_KEY = "AIzaSyC7g22ZagHV-J4LfBTyi3TsNqS4TAl1LB8";
+	const API_KEY = process.env.REACT_APP_API_KEY;
 	const [searchText, setSearchText] = useState("");
 	const url = `https://www.googleapis.com/books/v1/volumes?q=${
 		!searchText ? "brain" : searchText

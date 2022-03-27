@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import TwitterIcon from "@mui/icons-material/Twitter";
 
 function Footer() {
 	return (
@@ -41,13 +44,16 @@ function Footer() {
 						Authors & ads blog
 					</StyledLink>
 					<StyledLink href="" className="link">
-						API{" "}
+						API
 					</StyledLink>
 				</StyledLinkContainer>
 				<StyledLinkContainer>
-					<StyledTitle> CONNECT </StyledTitle> <StyledLink href=""> Facebook </StyledLink>
-					<StyledLink href=""> Twitter </StyledLink> <StyledLink href=""> Youtube </StyledLink>
-					<StyledLink href=""> </StyledLink>
+					<StyledTitle> CONNECT </StyledTitle>
+					<StyledIconContainer>
+						<FacebookIcon />
+						<YouTubeIcon />
+						<TwitterIcon />
+					</StyledIconContainer>
 				</StyledLinkContainer>
 				<StyledCompanyLink>
 					<img
@@ -90,4 +96,9 @@ export const StyledTitle = styled.h3`
 export const StyledCompanyLink = styled.div`
 	margin-left: auto;
 	width: 10rem;
+`;
+export const StyledIconContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	gap: 0.3rem;
 `;

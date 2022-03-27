@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-function Modal({ author, open }) {
+function Modal({ open, author, closeModal }) {
+	// const modifiedAuthor = `${author.split(" ")[0]}%20${author.split(" ")[1]}`;
+	console.log(author);
+	// console.log(modifiedAuthor);
 	const url = `https://www.googleapis.com/books/v1/volumes?q=inauthor:${author}&key=${API_KEY}`;
 	const [books, setBooks] = useState([]);
-
 	async function fetchAPI() {
 		try {
 			const response = await fetch(url);
@@ -22,17 +24,23 @@ function Modal({ author, open }) {
 	useEffect(() => {
 		fetchAPI();
 	}, []);
-
+	console.log(books);
 	if (open) {
 		return (
 			<StyledModal>
-				{books.map((book) => {
-					return (
-						<StyledWrapper>
-							<img alt={book.volumeInfo.title} src={book?.volumeInfo?.imageLinks?.smallThumbnail} />
-							<h5>{book.volumeInfo.title}</h5>
-						</StyledWrapper>
-					);
+				<h4 onClick={closeModal}>X</h4>
+				{books.map((book, index) => {
+					if (book?.volumeInfo?.imageLinks?.smallThumbnail) {
+						return (
+							<StyledWrapper key={index}>
+								<img
+									alt={book?.volumeInfo?.author}
+									src={book?.volumeInfo?.imageLinks?.smallThumbnail}
+								/>
+								<h5>{book.volumeInfo.title}</h5>
+							</StyledWrapper>
+						);
+					}
 				})}
 			</StyledModal>
 		);
@@ -43,21 +51,24 @@ export default Modal;
 
 export const StyledModal = styled.div`
 	position: fixed;
-	width: 60%;
-	height: 60%;
+	width: 70%;
+	height: 70%;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	background-color: #fff;
-	zindex: 1000;
+	z-index: 1000;
+	overflow: hidden;
+	overflow-y: scroll;
 `;
 export const StyledWrapper = styled.div`
 	display: flex;
 	flex-direction: row;
-	gap: 1rem;
+	gap: 3rem;
 	padding: 1rem;
+	margin: 1rem;
 	img {
-		width: 3rem;
-		height: 3rem;
+		width: 5rem;
+		height: 5rem;
 	}
 `;

@@ -10,13 +10,20 @@ function DetailedBookCard({
 	pageCount,
 	publishedDate,
 	isbn,
+	setIsOpen,
 }) {
 	return (
 		<div className="cardWrapper">
 			<div className="infoWrapper">
 				<img className="cardImage" src={image} alt={title} />
 				<h3>{author}</h3>
-				<a href=""> See other books of the author </a>
+				<h3
+					class="clickable"
+					onClick={() => {
+						setIsOpen(true);
+					}}>
+					See other books of the author
+				</h3>
 			</div>
 			<div className="infoWrapper">
 				<h3> {title} </h3>

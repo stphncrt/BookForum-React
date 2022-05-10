@@ -1,5 +1,5 @@
-import BookCard from "../BookCard/bookCard.js";
-import { StyledBookWrapper } from "../BookContainer/booksContainer";
+import BookCard from "./bookCard.js";
+import { StyledBookWrapper } from "./booksContainer";
 
 const BookList = ({ books }) => {
 	return (

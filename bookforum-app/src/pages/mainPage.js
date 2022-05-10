@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./page.css";
-import Content from "../components/Content/Content";
-import ReadingImg from "../components/ReadingImg/ReadingImg";
-import BookList from "../components/BookList/bookList";
-import SearchBar from "../components/SearchBar/SearchBar";
+import Content from "../components/Content";
+import ReadingImg from "../components/ReadingImg";
+import BookList from "../components/bookList";
+import SearchBar from "../components/SearchBar";
 
 function MainPage() {
 	const API_KEY = process.env.REACT_APP_API_KEY;

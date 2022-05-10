@@ -1,6 +1,8 @@
-import DetailedBookCard from "../components/BookDetail/detailedBookCard.js";
+import DetailedBookCard from "../components/detailedBookCard.js";
 import "./page.css";
-import Modal from "../components/Modal/Modal";
+import styled from "styled-components";
+
+import Modal from "../components/Modal";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 const API_KEY = process.env.REACT_APP_API_KEY;
@@ -33,7 +35,7 @@ function BookDetail() {
 	};
 	const handleOpen = () => setIsOpen(true);
 	return (
-		<div className="detailPage">
+		<StyledPageContainer>
 			<DetailedBookCard
 				title={book?.volumeInfo?.title}
 				author={book?.volumeInfo?.authors[0]}
@@ -46,8 +48,19 @@ function BookDetail() {
 				setIsOpen={handleOpen}
 			/>
 			<Modal open={isOpen} author={book?.volumeInfo?.authors[0]} closeModal={closeModal} />
-		</div>
+		</StyledPageContainer>
 	);
 }
 
 export default BookDetail;
+
+export const StyledPageContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	background-image: url("https://images.gr-assets.com/challenges/2022/facebook.png");
+	background-size: cover;
+	backdrop-filter: blur(15px);
+`;

@@ -2,8 +2,8 @@ import React from "react";
 import BookDetail from "./pages/bookDetailPage";
 import MainPage from "./pages/mainPage.js";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Footer from "./components/Footer/Footer.js";
-import Navbar from "./components/Navbar/navbar.js";
+import Footer from "./components/Footer.js";
+import Navbar from "./components/Navbar.js";
 
 function Router() {
 	return (

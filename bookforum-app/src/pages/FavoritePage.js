@@ -7,7 +7,7 @@ function FavoritePage() {
 	const [isLoading, setIsLoading] = useState(true);
 	const { favoritedBookIds } = useContext(FavoritesContext);
 	console.log(favoritedBookIds);
-  useEffect(() => {
+	useEffect(() => {
 		async function loadData() {
 			try {
 				const data = await Promise.all(
@@ -27,7 +27,7 @@ function FavoritePage() {
 
 		loadData();
 	}, [favoritedBookIds]);
-  return (
+	return (
 		<div>
 			<h2>Favorites</h2>
 			<div className="main">
@@ -38,12 +38,7 @@ function FavoritePage() {
 						<ClipLoader css={override} size={100} />
 					) : products.length ? (
 						products.map((product, index) => (
-							<BookCard
-								key={index}
-								id={product.id}
-								title={product.title}
-								image={product.image}
-							/>
+							<BookCard key={index} id={product.id} title={product.title} image={product.image} />
 						))
 					) : (
 						<div>No favorites!</div>

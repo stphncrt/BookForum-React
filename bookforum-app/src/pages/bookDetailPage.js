@@ -1,5 +1,4 @@
-import DetailedBookCard from "../components/detailedBookCard.js";
-import "./page.css";
+import DetailedBookCard from "../components/DetailedBookCard.js";
 import styled from "styled-components";
 
 import Modal from "../components/Modal";

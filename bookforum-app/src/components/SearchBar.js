@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import { StyledContainer, StyledWrapper, StyledInput, StyledButton } from "./mainPageStyle";
 
 function SearchBar({ setSearchText }) {
 	const [inputValue, setInputValue] = useState("");
@@ -10,9 +9,10 @@ function SearchBar({ setSearchText }) {
 		console.log(e.target.value);
 	}
 
-	function handleSearch(event) {
-		event.preventDefault();
+	function handleSearch(e) {
+		e.preventDefault();
 		setSearchText(inputValue);
+		console.log("Search handled");
 	}
 
 	function handleFocus(e) {

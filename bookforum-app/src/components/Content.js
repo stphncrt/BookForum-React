@@ -13,7 +13,7 @@ function content() {
 			</StyledContentWrapper>
 			<StyledContentWrapper>
 				<h4> What are your friends reading ? </h4>
-				<p class="u-defaultType">
+				<p className="u-defaultType">
 					Chances are your friends are discussing their favorite(and least favorite) books on
 					Goodreads.
 				</p>

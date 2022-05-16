@@ -1,5 +1,5 @@
-import BookCard from "./bookCard.js";
-import { StyledBookWrapper } from "./booksContainer";
+import BookCard from "./BookCard.js";
+import styled from "styled-components";
 
 const BookList = ({ books }) => {
 	return (
@@ -19,3 +19,10 @@ const BookList = ({ books }) => {
 	);
 };
 export default BookList;
+
+export const StyledBookWrapper = styled.div`
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 1rem 6rem;
+`;

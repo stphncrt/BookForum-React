@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Content from "../components/Content";
 import ReadingImg from "../components/ReadingImg";
-import BookList from "../components/bookList";
+import BookList from "../components/BookList";
 import SearchBar from "../components/SearchBar";
 
 function MainPage() {
 	const API_KEY = process.env.REACT_APP_API_KEY;
 	const [searchText, setSearchText] = useState("");
-	const url = `https://www.googleapis.com/books/v1/volumes?q=${
-		!searchText ? "brain" : searchText
-	}:keyes&key=${API_KEY}&maxResult=40`;
 	const [books, setBooks] = useState([]);
+	const url = `https://www.googleapis.com/books/v1/volumes?q=${
+		searchText ? searchText : "brain"
+	}:keyes&key=${API_KEY}&maxResult=40`;
 
 	useEffect(() => {
 		fetch(url)
@@ -20,7 +20,7 @@ function MainPage() {
 	}, [url]);
 
 	return (
-		<div className="mainPage">
+		<div>
 			<ReadingImg />
 			<SearchBar setSearchText={setSearchText} />
 			<Content />

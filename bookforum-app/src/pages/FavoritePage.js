@@ -35,10 +35,10 @@ function FavoritePage() {
 		fetchData();
 	}, [favoritedBookIds]);
 	return (
-		<div>
-			<h2 id="title">Favorites</h2>
+		<StyledWrapper>
+			<h2 id="title">Favorited Books</h2>
 			<div className="main">
-				<StyledWrapper className="bookContainer">
+				<ul className="bookContainer">
 					{isError ? (
 						<span>BAD REQUEST!</span>
 					) : isLoading ? (
@@ -55,16 +55,22 @@ function FavoritePage() {
 					) : (
 						<div>No favorites!</div>
 					)}
-				</StyledWrapper>
+				</ul>
 			</div>
-		</div>
+		</StyledWrapper>
 	);
 }
 export default FavoritePage;
-export const StyledWrapper = styled.ul`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+export const StyledWrapper = styled.div`
+	ul {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	#title {
+		text-align: center;
+		color: #6a5c4c;
+	}
 `;
 export const override = css`
 	display: block;

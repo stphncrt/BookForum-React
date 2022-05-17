@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ReactComponent as HeartRegular } from "../assets/heart-regular.svg";
 import { ReactComponent as HeartSolid } from "../assets/heart-solid.svg";
-import FavoritesContext from "../context/FavoritesContext";
+import { FavoritesContext } from "../context/FavoritesContext";
 
 const BookCard = (props) => {
 	const { favoritedBookIds, addToFavorites, removeFromFavorites } = useContext(FavoritesContext);

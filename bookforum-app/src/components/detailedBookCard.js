@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { ReactComponent as HeartRegular } from "../assets/heart-regular.svg";
 import { ReactComponent as HeartSolid } from "../assets/heart-solid.svg";
+import { FavoritesContext } from "../context/FavoritesContext";
 
 function DetailedBookCard({
 	title,
@@ -13,7 +14,10 @@ function DetailedBookCard({
 	publishedDate,
 	isbn,
 	setIsOpen,
+	id,
 }) {
+	const { removeFromFavorites, addToFavorites } = useContext(FavoritesContext);
+
 	return (
 		<StyledContainer>
 			<div className="infoWrapper">
@@ -37,7 +41,7 @@ function DetailedBookCard({
 								onClick={(e) => {
 									e.preventDefault();
 									e.stopPropagation();
-									// removeFromFavorites(props.id);
+									removeFromFavorites(id);
 								}}
 							/>
 						) : (
@@ -46,7 +50,7 @@ function DetailedBookCard({
 								onClick={(e) => {
 									e.stopPropagation();
 									e.preventDefault();
-									// addToFavorites(props.id);
+									addToFavorites(id);
 								}}
 							/>
 						)}

@@ -43,8 +43,8 @@ const BookCard = (props) => {
 export default BookCard;
 export const StyledCardWrapper = styled(Link)`
 	margin: 10px;
-	width: 20%;
-	/* height: rem; */
+	height: 15rem;
+	width: 10rem;
 	border-radius: 0.5rem;
 	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
 	justify-content: center;
@@ -54,6 +54,8 @@ export const StyledCardWrapper = styled(Link)`
 	transition: 0.5s;
 	background-color: #f4f2e9;
 	opacity: 0.8;
+	text-decoration: none;
+	color: black;
 
 	&:hover {
 		transform: scale(1.02);

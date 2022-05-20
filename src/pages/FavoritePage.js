@@ -20,6 +20,7 @@ function FavoritePage() {
 						const response = await fetch(`https://www.googleapis.com/books/v1/volumes/
 						${id}?key=${API_KEY}`);
 						const result = await response.json();
+						console.log(result);
 						return result;
 					}),
 				);
@@ -43,11 +44,11 @@ function FavoritePage() {
 						<span>BAD REQUEST!</span>
 					) : isLoading ? (
 						<ClipLoader css={override} size={100} />
-					) : books.length ? (
+					) : books.length > 0 ? (
 						books.map((book, index) => (
 							<BookCard
 								key={index}
-								id={book?.volumeInfo?.id}
+								id={book?.id}
 								title={book?.volumeInfo?.title}
 								image={book?.volumeInfo?.imageLinks?.smallThumbnail}
 							/>

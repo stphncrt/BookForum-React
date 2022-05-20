@@ -16,7 +16,11 @@ function DetailedBookCard({
 	setIsOpen,
 	id,
 }) {
-	const { removeFromFavorites, addToFavorites } = useContext(FavoritesContext);
+	const { favoritedBookIds, removeFromFavorites, addToFavorites } = useContext(FavoritesContext);
+	const favoritedBook = favoritedBookIds.find((favId) => favId === id);
+	console.log(favoritedBookIds);
+	console.log(favoritedBook);
+	console.log(id);
 
 	return (
 		<StyledContainer>
@@ -35,21 +39,17 @@ function DetailedBookCard({
 				<div className="column-row">
 					<h3> {title} </h3>
 					<div>
-						{true ? (
+						{favoritedBook ? (
 							<HeartSolid
 								className="heart"
-								onClick={(e) => {
-									e.preventDefault();
-									e.stopPropagation();
+								onClick={() => {
 									removeFromFavorites(id);
 								}}
 							/>
 						) : (
 							<HeartRegular
 								className="heart"
-								onClick={(e) => {
-									e.stopPropagation();
-									e.preventDefault();
+								onClick={() => {
 									addToFavorites(id);
 								}}
 							/>

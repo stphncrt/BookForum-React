@@ -45,8 +45,9 @@ function BookDetail() {
 				pageCount={book?.volumeInfo?.pageCount}
 				// isbn={book?.volumeInfo?.industryIdentifiers[1]?.identifier}
 				setIsOpen={handleOpen}
+				id={book?.id}
 			/>
-			<Modal open={isOpen} author={book?.volumeInfo?.authors[0]} closeModal={closeModal} />
+			{/* <Modal open={isOpen} author={book?.volumeInfo?.authors[0]} closeModal={closeModal} /> */}
 		</StyledPageContainer>
 	);
 }

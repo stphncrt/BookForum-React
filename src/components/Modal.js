@@ -8,6 +8,29 @@ function Modal({ open, author, closeModal }) {
 	// console.log(modifiedAuthor);
 	const url = `https://www.googleapis.com/books/v1/volumes?q=inauthor:${author}&key=${API_KEY}`;
 	const [books, setBooks] = useState([]);
+
+	// useEffect(() => {
+	// 	async function fetchData() {
+	// 		try {
+	// 			const data = await Promise.all(
+	// 				favoritedBookIds.map(async (id) => {
+	// 					const response = await fetch(url);
+	// 					const result = await response.json();
+	// 					return result;
+	// 				}),
+	// 			);
+	// 			setBooks(data);
+	// 			console.log(data);
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 			setIsError(true);
+	// 		}
+	// 		setIsLoading(false);
+	// 	}
+
+	// 	fetchData();
+	// }, [favoritedBookIds]);
+
 	async function fetchAPI() {
 		try {
 			const response = await fetch(url);

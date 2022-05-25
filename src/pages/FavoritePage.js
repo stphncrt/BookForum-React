@@ -20,12 +20,10 @@ function FavoritePage() {
 						const response = await fetch(`https://www.googleapis.com/books/v1/volumes/
 						${id}?key=${API_KEY}`);
 						const result = await response.json();
-						console.log(result);
 						return result;
 					}),
 				);
 				setBooks(data);
-				console.log(data);
 			} catch (error) {
 				console.log(error);
 				setIsError(true);

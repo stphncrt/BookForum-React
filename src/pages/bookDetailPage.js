@@ -1,6 +1,5 @@
 import DetailedBookCard from "../components/DetailedBookCard.js";
 import styled from "styled-components";
-
 import Modal from "../components/Modal";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -11,6 +10,8 @@ function BookDetail() {
 	const url = `https://www.googleapis.com/books/v1/volumes/${id}?key=${API_KEY}`;
 	const [book, setBook] = useState(null);
 	const [isOpen, setIsOpen] = useState(false);
+	const closeModal = () => setIsOpen(false);
+	const handleOpen = () => setIsOpen(true);
 
 	async function fetchAPI() {
 		try {
@@ -24,17 +25,12 @@ function BookDetail() {
 			console.log(err.message);
 		}
 	}
-
 	useEffect(() => {
 		fetchAPI();
 	}, []);
-	console.log(book);
-	const closeModal = () => {
-		setIsOpen(false);
-	};
-	const handleOpen = () => setIsOpen(true);
+
 	return (
-		<StyledPageContainer>
+		<StyledPageContainer open={isOpen}>
 			<DetailedBookCard
 				title={book?.volumeInfo?.title}
 				author={book?.volumeInfo?.authors[0]}
@@ -43,11 +39,10 @@ function BookDetail() {
 				category={book?.volumeInfo?.categories[0]}
 				publishedDate={book?.volumeInfo?.publishedDate}
 				pageCount={book?.volumeInfo?.pageCount}
-				// isbn={book?.volumeInfo?.industryIdentifiers[1]?.identifier}
 				setIsOpen={handleOpen}
 				id={book?.id}
 			/>
-			{/* <Modal open={isOpen} author={book?.volumeInfo?.authors[0]} closeModal={closeModal} /> */}
+			<Modal open={isOpen} author={book?.volumeInfo?.authors[0]} closeModal={closeModal} />
 		</StyledPageContainer>
 	);
 }

@@ -18,9 +18,6 @@ function DetailedBookCard({
 }) {
 	const { favoritedBookIds, removeFromFavorites, addToFavorites } = useContext(FavoritesContext);
 	const favoritedBook = favoritedBookIds.find((favId) => favId === id);
-	console.log(favoritedBookIds);
-	console.log(favoritedBook);
-	console.log(id);
 
 	return (
 		<StyledContainer>

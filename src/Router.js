@@ -1,7 +1,7 @@
 import React from "react";
-import BookDetail from "./pages/bookDetailPage";
+import BookDetail from "./pages/BookDetailPage";
 import { FavoritesProvider } from "./context/FavoritesContext";
-import MainPage from "./pages/mainPage.js";
+import MainPage from "./pages/MainPage.js";
 import FavoritePage from "./pages/FavoritePage.js";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer.js";

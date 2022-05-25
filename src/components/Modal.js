@@ -1,57 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-const API_KEY = process.env.REACT_APP_API_KEY;
+import useFetch from "../hooks/UseFetch";
 
 function Modal({ open, author, closeModal }) {
-	// const modifiedAuthor = `${author.split(" ")[0]}%20${author.split(" ")[1]}`;
-	console.log(author);
-	// console.log(modifiedAuthor);
+	const API_KEY = process.env.REACT_APP_API_KEY;
 	const url = `https://www.googleapis.com/books/v1/volumes?q=inauthor:${author}&key=${API_KEY}`;
-	const [books, setBooks] = useState([]);
+	const { data: books } = useFetch(url);
 
-	// useEffect(() => {
-	// 	async function fetchData() {
-	// 		try {
-	// 			const data = await Promise.all(
-	// 				favoritedBookIds.map(async (id) => {
-	// 					const response = await fetch(url);
-	// 					const result = await response.json();
-	// 					return result;
-	// 				}),
-	// 			);
-	// 			setBooks(data);
-	// 			console.log(data);
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 			setIsError(true);
-	// 		}
-	// 		setIsLoading(false);
-	// 	}
-
-	// 	fetchData();
-	// }, [favoritedBookIds]);
-
-	async function fetchAPI() {
-		try {
-			const response = await fetch(url);
-			if (!response.ok) {
-				throw new Error("Fetch API failed");
-			}
-			const modalItems = await response.json();
-			console.log(modalItems.items);
-			setBooks(modalItems.items);
-		} catch (err) {
-			console.log(err.message);
-		}
-	}
-	useEffect(() => {
-		fetchAPI();
-	}, []);
 	console.log(books);
 	if (open) {
 		return (
 			<StyledModal>
-				<h4 onClick={closeModal}>X</h4>
+				<div class="flexRow">
+					<h4>Other Books of the Author</h4>
+					<h4 className="close" onClick={closeModal}>
+						X
+					</h4>
+				</div>
 				{books.map((book, index) => {
 					if (book?.volumeInfo?.imageLinks?.smallThumbnail) {
 						return (
@@ -79,10 +44,24 @@ export const StyledModal = styled.div`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #fff;
+	background-color: #fff7e9;
 	z-index: 1000;
 	overflow: hidden;
 	overflow-y: scroll;
+	.flexRow {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	.close {
+		margin: 0.4rem;
+		position: absolute;
+		right: 1rem;
+		:hover {
+			transform: scale(1.2);
+		}
+	}
 `;
 export const StyledWrapper = styled.div`
 	display: flex;

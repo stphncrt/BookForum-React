@@ -22,7 +22,7 @@ function BookDetail() {
 			const bookData = await response.json();
 			setBook(bookData);
 		} catch (err) {
-			console.log(err.message);
+			throw new Error(err.message);
 		}
 	}
 	useEffect(() => {

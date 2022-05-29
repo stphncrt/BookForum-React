@@ -35,7 +35,7 @@ function BookDetail() {
 				title={book?.volumeInfo?.title}
 				author={book?.volumeInfo?.authors[0]}
 				image={book?.volumeInfo?.imageLinks?.thumbnail}
-				description={book?.volumeInfo?.description}
+				description={book?.volumeInfo?.description?.replace(/<[^>]+>/g, "")}
 				category={book?.volumeInfo?.categories[0]}
 				publishedDate={book?.volumeInfo?.publishedDate}
 				pageCount={book?.volumeInfo?.pageCount}

@@ -6,13 +6,11 @@ function SearchBar({ setSearchText }) {
 
 	function handleChange(e) {
 		setInputValue(e.target.value);
-		console.log(e.target.value);
 	}
 
 	function handleSearch(e) {
 		e.preventDefault();
 		setSearchText(inputValue);
-		console.log("Search handled");
 	}
 
 	function handleFocus(e) {

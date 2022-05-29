@@ -9,7 +9,7 @@
 - Contributing 
 - License
 ## Demo
-<img src='https://github.com/stphncrt/BookForum-React/blob/main/public/BookApp.gif' />
+<img src='https://github.com/stphncrt/BookForum-React/blob/main/public/BookForum.gif' />
 
 ## Description
 This is a book forum application created with **Create React App** framework. Application provides main features you'd expect from a book forum , such as searching a book, demostrating details of the book that is being looked for, other books of the author.
